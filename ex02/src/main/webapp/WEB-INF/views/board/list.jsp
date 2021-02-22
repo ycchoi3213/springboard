@@ -17,6 +17,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <button id="regBtn" type="button" class="btn btn-xs pull-right" style="float: right;">Register New Board</button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -34,7 +35,7 @@
                                     	<c:forEach items="${list}" var="board">
                                         <tr>
                                             <td>${board.bno}</td>
-                                            <td>${board.title}</td>
+                                            <td><a href="/board/get?bno=<c:out value="${board.bno}"/>">${board.title}</a></td>
                                             <td>${board.writer}</td>
                                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}"/></td>
                                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate}"/></td>
@@ -93,7 +94,14 @@ $(document).ready(function(){
 		}
 		$("#myModal").modal("show");		
 
-		}
+	}
+	$("#regBtn").click(function(){
+
+		self.location="/board/register";
+
+	});
+
+	
 });
 
 

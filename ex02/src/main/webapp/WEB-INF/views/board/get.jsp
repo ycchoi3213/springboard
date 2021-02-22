@@ -36,7 +36,8 @@
                            			<label>Writer</label>
                            			<input class="form-control" name="writer"  readonly="readonly" value='<c:out value="${board.writer}"/>'/>
                            		</div>
-                             	<button type="submit" class="btn btn-default">Submit Button</button>
+                             	<button type="submit" class="btn btn-default"><a href="/board/list">List</a></button>
+                             	<button type="submit" class="btn btn-default"><a href="/board/modify?bno=<c:out value="${board.bno}"/>">Modify</a></button>
                         		<button type="reset" class="btn btn-default">Reset Button</button>
                                
                                

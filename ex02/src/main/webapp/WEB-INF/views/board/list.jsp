@@ -43,6 +43,24 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
+                          
+                                <div class='pull-right'>
+                                	<ul class="pagination">
+                                		<c:if test="${pageMaker.prev}">
+              		                  	<li class="page-item">
+    									   <a class="page-link" href="${pageMaker.StartPage - 1 }" tabindex="-1">Previous</a>
+   										</li>
+   										</c:if>
+                                		<c:forEach begin="${pageMaker.startPage }" end = "${pageMaker.endPage}" var = "num">
+                                		<li class="page-item ${pageMaker.cri.pageNum == num?"active":"" }"><a class="page-link" href="${num}">${num}</a></li>
+                         				</c:forEach>
+                         				<c:if test="${pageMaker.next}">
+                         				<li class="page-item">
+    									   <a class="page-link" href="${pageMaker.endPage + 1 }" tabindex="-1">Next</a>
+   										</li>
+   										</c:if>
+                                	</ul>
+                                
                             </div>
                         </div>
                     </div>
@@ -52,6 +70,15 @@
 
             </div>
             <!-- End of Main Content -->
+            
+            <form id = 'actionForm' action "/board/list" method='get'>
+            	<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+            	<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+            
+            </form>
+            
+            
+            
            
 <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -106,6 +133,19 @@ $(document).ready(function(){
 
 	});
 
+	var actionForm = $("#actionForm");
+
+	$(".page-link").on("click", function(e){
+		e.preventDefault();
+
+		var targetPage = $(this).attr("href");
+
+		console.log(targetPage);
+
+		actionForm.find("input[name='pageNum']").val(targetPage);
+
+		});
+		
 	
 });
 

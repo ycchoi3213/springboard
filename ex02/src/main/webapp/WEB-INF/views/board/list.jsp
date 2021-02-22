@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+
 <%@include file="../includes/sidebar.jsp" %>
 <%@include file="../includes/topbar.jsp" %>
 
@@ -19,24 +23,23 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>BNO</th>
+                                            <th>Title</th>
+                                            <th>Writer</th>
+                                            <th>RegDate</th>
+                                            <th>UpdateDate</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    	<c:forEach items="${list}" var="board">
                                         <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
+                                            <td>${board.bno}</td>
+                                            <td>${board.title}</td>
+                                            <td>${board.writer}</td>
+                                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}"/></td>
+                                            <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate}"/></td>
                                         </tr>
-                                      
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
